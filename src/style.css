@@ -1,0 +1,52 @@
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: calc(100vw - 6px);
+    height: calc(100vh - 6px); 
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 3px solid gray;
+    background: silver;
+}
+
+.head {
+    width: calc(100vw - 12px);
+    height: 10vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: 3px solid gray;
+    background: ivory;
+
+} 
+
+.window {
+    background: transparent;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: calc(100vw - 6px);
+    height: calc(90vh - 9px);
+}
+
+.add-button {
+    width: 5vw;
+    height: 5vh;
+    margin-left: 10vw;
+    margin-top: 2.5vh;
+}
+
+.inner-window {
+    width: 25vw;
+    height: 25vh;
+    background: indianred;
+    border: 3px solid black;
+}
