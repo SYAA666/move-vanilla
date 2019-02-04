@@ -7,14 +7,11 @@ class Window {
         this.markup = document.createElement('div');
         this.markup.classList.add('inner-window');
         this.index = index;
-        /*
-        let buttons = ['X', 'O', '_'];
-        buttons.forEach((el) => {
-            let button = document.createElement('button');
-                button.classList.add(el);
-                button.textContent = el;
-                this.markup.appendChild(button);
-        }) */
+        this.clickCoordinates = {
+            X: 0,
+            Y: 0
+        };
+
         this.closeButton = document.createElement('button');
         this.closeButton.textContent = 'X';
         this.screenButton = document.createElement('button');
@@ -56,18 +53,6 @@ class Window {
         }
     }
 
-    onMouseDown(event) {
-        if (event.target === this.closeButton || event.target === this.screenButton || event.target === this.hideButton) return false;
-        this.markup.addEventListener('mousemove', this.moveHandler);
-    }
-    onMouseMove(event) {
-        if (this.markup.classList.contains('full')) return false;
-        this.markup.style.top = event.pageY - this.markup.offsetHeight / 1.1;
-        this.markup.style.left = event.pageX - this.markup.offsetWidth / 2;
-    }
-    onMouseUp() {
-        this.markup.removeEventListener('mousemove', this.moveHandler);
-    }
     hide() {
         this.previousState.X = this.markup.style.left;
         this.previousState.Y = this.markup.style.top;
@@ -82,6 +67,25 @@ class Window {
             this.markup.style.left = this.previousState.X;
             this.markup.style.top = this.previousState.Y;
         }
+    }
+
+    onMouseDown(event) {
+        if (event.target === this.closeButton || event.target === this.screenButton || event.target === this.hideButton) return false;
+        this.clickCoordinates.X = event.pageX - this.markup.offsetLeft;
+        this.clickCoordinates.Y = event.pageY - this.markup.offsetTop;
+        console.log( this.clickCoordinates.X);
+        this.markup.parentElement.addEventListener('mousemove', this.moveHandler);
+    }
+
+    onMouseMove(event) {
+        if (this.markup.classList.contains('full')) return false;
+        //console.log(event.pageY - 250);
+        this.markup.style.top = event.pageY - this.clickCoordinates.Y;
+        this.markup.style.left = event.pageX - this.clickCoordinates.X;
+    }
+
+    onMouseUp() {
+        this.markup.parentElement.removeEventListener('mousemove', this.moveHandler);
     }
 }
 
