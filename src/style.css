@@ -74,6 +74,8 @@ body {
 }
 
 .hidden {
+    display: flex;
+    flex-direction: row;
     position: relative;
     width: calc(100% - 6px);
     height: 5%;
@@ -85,8 +87,12 @@ body {
     background: ivory;
 }
 
-.hdie {
+.hide {
+    margin-left: 2px;
+    margin-top: 5px;
     background: lightslategray;
-    width: 10vw;
+    width: calc(8vw - 5px);
     height: 3vh;
+    border: 3px solid gray;
+    background: ivory;
 }

@@ -76,6 +76,12 @@ class Window {
             hiddenFlag.classList.add('hide');
             hiddenFlag.innerHTML = `<p>${this.index}</p>`
         document.querySelector('.hidden').appendChild(hiddenFlag);
+        hiddenFlag.onclick = () => {
+            hiddenFlag.parentElement.removeChild(hiddenFlag);
+            document.querySelector('.window').appendChild(this.markup);
+            this.markup.style.left = this.previousState.X;
+            this.markup.style.top = this.previousState.Y;
+        }
     }
 }
 
