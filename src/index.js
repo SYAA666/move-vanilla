@@ -73,7 +73,7 @@ class Window {
         if (event.target === this.closeButton || event.target === this.screenButton || event.target === this.hideButton) return false;
         this.clickCoordinates.X = event.pageX - this.markup.offsetLeft;
         this.clickCoordinates.Y = event.pageY - this.markup.offsetTop;
-        console.log( this.clickCoordinates.X);
+        this.markup.parentElement.appendChild(this.markup);
         this.markup.parentElement.addEventListener('mousemove', this.moveHandler);
     }
 
@@ -85,6 +85,7 @@ class Window {
     }
 
     onMouseUp() {
+        
         this.markup.parentElement.removeEventListener('mousemove', this.moveHandler);
     }
 }
